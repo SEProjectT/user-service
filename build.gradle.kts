@@ -72,6 +72,11 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.assertj:assertj-core:3.24.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	/**
+	 * Swagger
+	 */
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0")
 }
 
 tasks.withType<KotlinCompile> {

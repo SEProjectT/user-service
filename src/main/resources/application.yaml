@@ -12,3 +12,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     user: user
     password: password
+
+springdoc:
+  swagger-ui:
+    path: /user-service.html
