@@ -1,4 +1,7 @@
 Сервис для получения пользователей по id
 
-cd user-service
+git clone https://github.com/khalyavinandrey/discordbot
+
+cd discordbot
+
 docker-compose up -d
