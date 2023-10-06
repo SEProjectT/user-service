@@ -14,10 +14,10 @@ jobs:
     services:
       postgres:
         image: postgres:13.3
-        environment:
+        env:
           - POSTGRES_USER=user
           - POSTGRES_PASSWORD=password
-          - POSTGRES_DB=testdb
+          - POSTGRES_DB=postgres
         options:
           --health-cmd pg_isready
           --health-interval 10s
@@ -36,11 +36,20 @@ jobs:
           java-version: 17
           distribution: 'adopt'
 
-      - name: Build and Test
+      - name: Build
         run: |
           ./gradlew build --no-daemon
           EXIT_CODE=$?
           if [[ $EXIT_CODE -ne 0 ]]; then
             echo "Build failed. Aborting the push."
+            exit $EXIT_CODE
+          fi
+
+      - name: Run Tests
+        run: |
+          ./gradlew test --no-daemon
+          EXIT_CODE=$?
+          if [[ $EXIT_CODE -ne 0 ]]; then
+            echo "Tests failed. Aborting the push."
             exit $EXIT_CODE
           fi
