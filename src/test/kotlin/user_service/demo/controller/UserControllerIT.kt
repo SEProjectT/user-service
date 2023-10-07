@@ -13,8 +13,6 @@ import org.testcontainers.containers.PostgreSQLContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 import user_service.demo.UserServiceApplication
-import user_service.demo.repository.UserRepository
-import user_service.demo.service.UserService
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = [UserServiceApplication::class])
 @Testcontainers
@@ -56,13 +54,6 @@ class UserControllerIT {
     @Autowired
     private lateinit var webTestClient: WebTestClient
 
-    @Autowired
-    private lateinit var userService: UserService
-
-    @Autowired
-    private lateinit var userRepository: UserRepository
-
-    @Test
     fun getUser() {
         webTestClient.get().uri("/users/1")
                 .accept(MediaType.APPLICATION_JSON)

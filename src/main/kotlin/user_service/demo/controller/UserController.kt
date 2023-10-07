@@ -1,5 +1,6 @@
 package user_service.demo.controller
 
+import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -19,6 +20,7 @@ class UserController(@Autowired val userService: UserService) {
     private var logger: Logger = Logger.getLogger(UserController::class.java.name)
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get user", description = "Get user by id")
     fun getUser(@PathVariable id: Long): Mono<UserDto> {
         logger.info("Getting user with id: $id")
 
@@ -26,6 +28,7 @@ class UserController(@Autowired val userService: UserService) {
     }
 
     @GetMapping("/")
+    @Operation(summary = "Get users", description = "Get users by ids")
     fun getUsers(@RequestParam ids: List<Long>): Flux<UserDto> {
         logger.info("Getting users with ids: $ids")
 
