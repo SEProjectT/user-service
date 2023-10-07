@@ -70,7 +70,7 @@ class UserControllerIT {
                 .expectStatus().is2xxSuccessful
                 .expectBody()
                 .jsonPath("$.id").isEqualTo(1)
-                .jsonPath("$.username").isEqualTo("user1")
+                .jsonPath("$.username").isEqualTo("user2")
                 .jsonPath("$.preferredContact").isEqualTo("SMS")
                 .jsonPath("$.email").isEqualTo("email1")
                 .jsonPath("$.phone").isEqualTo("phone1")
