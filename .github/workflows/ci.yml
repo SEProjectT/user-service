@@ -38,6 +38,7 @@ jobs:
 
       - name: Build
         run: |
+          chmod +x ./gradlew
           ./gradlew build --no-daemon
           EXIT_CODE=$?
           if [[ $EXIT_CODE -ne 0 ]]; then
