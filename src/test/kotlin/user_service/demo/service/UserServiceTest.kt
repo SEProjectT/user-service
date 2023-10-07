@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono
 import user_service.demo.dto.UserDto
 import user_service.demo.model.Users
 import user_service.demo.repository.UserRepository
+import user_service.demo.service.impl.UserServiceImpl
 
 @ExtendWith(MockitoExtension::class)
 class UserServiceTest {
@@ -20,7 +21,7 @@ class UserServiceTest {
     private lateinit var userRepository: UserRepository
 
     @InjectMocks
-    private lateinit var userService: UserService
+    private lateinit var userServiceImpl: UserServiceImpl
 
     @Test
     fun getUser() {
@@ -29,7 +30,7 @@ class UserServiceTest {
         `when`(userRepository.findById(1))
                 .thenReturn(user)
 
-        val actual = userService.getUser(1)
+        val actual = userServiceImpl.getUser(1)
 
         val expectedUserDto = expected.block()
         val actualUserDto = actual.block()
@@ -45,7 +46,7 @@ class UserServiceTest {
         `when`(userRepository.findByIds(listOf(1, 2)))
                 .thenReturn(users)
 
-        val actual = userService.getUsers(listOf(1, 2))
+        val actual = userServiceImpl.getUsers(listOf(1, 2))
 
         val expectedList = expected.collectList().block()
         val actualList = actual.collectList().block()
