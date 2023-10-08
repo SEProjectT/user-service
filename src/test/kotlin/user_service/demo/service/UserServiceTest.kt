@@ -9,6 +9,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import user_service.demo.dto.PreferredContact
 import user_service.demo.dto.UserDto
 import user_service.demo.model.Users
 import user_service.demo.repository.UserRepository
@@ -25,8 +26,8 @@ class UserServiceTest {
 
     @Test
     fun getUser() {
-        val user: Mono<Users> = Mono.just(Users(1, "username", "SMS", "email", "phone"))
-        val expected: Mono<UserDto> = Mono.just(UserDto(1, "username", "SMS", "email", "phone"))
+        val user: Mono<Users> = Mono.just(Users(1, "username", PreferredContact.SMS, "email", "phone"))
+        val expected: Mono<UserDto> = Mono.just(UserDto(1, "username", PreferredContact.SMS, "email", "phone"))
         `when`(userRepository.findById(1))
                 .thenReturn(user)
 
@@ -39,10 +40,10 @@ class UserServiceTest {
 
     @Test
     fun getUsers() {
-        val users: Flux<Users> = Flux.just(Users(1, "username", "SMS", "email", "phone"),
-                Users(2, "username", "EMAIL", "email", "phone"))
-        val expected: Flux<UserDto> = Flux.just(UserDto(1, "username", "SMS", "email", "phone"),
-                UserDto(2, "username", "EMAIL", "email", "phone"))
+        val users: Flux<Users> = Flux.just(Users(1, "username", PreferredContact.SMS, "email", "phone"),
+                Users(2, "username", PreferredContact.EMAIL, "email", "phone"))
+        val expected: Flux<UserDto> = Flux.just(UserDto(1, "username", PreferredContact.SMS, "email", "phone"),
+                UserDto(2, "username", PreferredContact.EMAIL, "email", "phone"))
         `when`(userRepository.findByIds(listOf(1, 2)))
                 .thenReturn(users)
 

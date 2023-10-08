@@ -5,7 +5,7 @@ data class UserDto(
 
     val username: String,
 
-    val preferredContact: String,
+    val preferredContact: PreferredContact,
 
     val email: String,
 
