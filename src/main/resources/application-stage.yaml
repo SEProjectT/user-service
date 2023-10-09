@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT}
+  port: ${USER_SERVICE_PORT}
 
 spring:
   r2dbc:
