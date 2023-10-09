@@ -54,6 +54,7 @@ class UserControllerIT {
     @Autowired
     private lateinit var webTestClient: WebTestClient
 
+    @Test
     fun getUser() {
         webTestClient.get().uri("/users/1")
                 .accept(MediaType.APPLICATION_JSON)
