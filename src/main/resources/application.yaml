@@ -1,18 +1,7 @@
-server:
-  port: 8080
-
-spring:
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/postgres
-    username: user
-    password: password
-
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
-    url: jdbc:postgresql://localhost:5432/postgres
-    user: user
-    password: password
-
 springdoc:
   swagger-ui:
     path: /user-service.html
+
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
