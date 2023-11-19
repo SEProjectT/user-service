@@ -1,5 +1,7 @@
 package user_service.demo.dto
 
+import user_service.demo.model.PreferredContact
+
 data class UserDto(
     val id: Long,
 

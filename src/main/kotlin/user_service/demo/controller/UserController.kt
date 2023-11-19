@@ -1,7 +1,6 @@
 package user_service.demo.controller
 
 import io.swagger.v3.oas.annotations.Operation
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -15,9 +14,9 @@ import java.util.logging.Logger
 
 @RestController
 @RequestMapping("/users")
-class UserController(@Autowired val userService: UserService) {
+class UserController(val userService: UserService) {
 
-    private var logger: Logger = Logger.getLogger(UserController::class.java.name)
+    private var logger: Logger = Logger.getLogger(this::class.java.name)
 
     @GetMapping("/{id}")
     @Operation(summary = "Get user", description = "Get user by id")
