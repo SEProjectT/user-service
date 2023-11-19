@@ -11,9 +11,8 @@ import user_service.demo.service.UserService
 import java.util.logging.Logger
 
 @Service
-@Transactional(readOnly = true)
 class UserServiceImpl(
-    val userRepository: UserRepository
+    private val userRepository: UserRepository
 ) : UserService {
 
     private var logger: Logger = Logger.getLogger(this::class.java.name)

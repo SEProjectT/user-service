@@ -14,7 +14,9 @@ import java.util.logging.Logger
 
 @RestController
 @RequestMapping("/users")
-class UserController(val userService: UserService) {
+class UserController(
+    private val userService: UserService
+) {
 
     private var logger: Logger = Logger.getLogger(this::class.java.name)
 
